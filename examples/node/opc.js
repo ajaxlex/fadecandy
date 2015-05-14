@@ -38,6 +38,10 @@ OPC.prototype._reconnect = function()
         _this.connected = true;
         _this.socket.setNoDelay();
     });
+    
+    this.socket.on('error', function( error ) {
+      console.log("Error with connection " + _this.host + ":" + _this.port + " " + error);
+    });    
 }
 
 OPC.prototype.writePixels = function()
